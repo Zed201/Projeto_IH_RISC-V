@@ -14,7 +14,7 @@ module alu#(
     
         always_comb
         begin
-                // fazer as combinações aqui,
+                // fazer as combinações aqui, tomando cuidado para combinar
             case(Operation)
             4'b0000:        // AND
                     ALUResult = SrcA & SrcB;

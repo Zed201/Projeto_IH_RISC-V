@@ -12,7 +12,7 @@ module ALUController (
 );
     /*
     As operações vão ser combinadas, de acordo com tipos também, aqui, implementadas no alu.sv, basicamente tem que:
-    1. not_equal(jump)
+    1. not_equal(jump) // mexer no branchunit
     2. less_than(jump)
     3. greater_than(jump)
     4. addi (type I)
