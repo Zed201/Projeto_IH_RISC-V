@@ -46,7 +46,7 @@ module tb_top;
   
   always @(posedge tb_clk) begin : REGISTER
     if (reg_write_sig)
-      $display($time, ": Register [%d] written with value: [%X] | [%d]\n", reg_num, reg_data, $signed(reg_data));
+      $display($time, ": Register x%d written with value: unsigned [%X] - signed [%d]\n", reg_num, reg_data, $signed(reg_data));
   end : REGISTER
 
   always @(posedge tb_clk) begin : MEMORY
