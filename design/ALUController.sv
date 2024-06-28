@@ -21,6 +21,8 @@ module ALUController (
     5. sub (type R) (ALUOp == 2'b10) && (Funct3 == 3'b000) && (Funct7 == 7'b0100000)
     6. xor (type I) (ALUOp == 2'b10) && (Funct3 == 3'b100) && (Funct7 == 7'b0000000)
     7. or (type R) (ALUOp == 2'b10) && (Funct3 == 3'b110) && (Funct7 == 7'b0000000)
+    14. add (type R) (ALUOp == 2'b10) && (Funct3 == 3'b000) && (Funct7 == 7'b0000000)
+    15. and (type I) (ALUOp == 2'b10) && (Funct3 == 3'b111) && (Funct7 == 7'b0000000)
 
     8. slt (set less than, basicamente rd <- (rs1 < rs2)? 1 : 0) (type R)
     (ALUOp == 2'b10) && (Funct3 == 3'b010) && (Funct7 == 7'b0000000)
@@ -37,7 +39,8 @@ module ALUController (
     12. slli (shift left logic imediate) (type I)
     (ALUOp == 2'b10) && (Funct3 == 3'b001) && (Funct7 == 7'b0000000)
 
-
+    16. lw/sw_load (ALUOp == 2'b00) 
+    
     */
     // padrão:
   /*assign Operation[0] = ((ALUOp == 2'b10) && (Funct3 == 3'b110)) ||  // R\I-or
@@ -56,10 +59,13 @@ module ALUController (
   assign Operation[3] = (ALUOp == 2'b01) ||  // BEQ
       ((ALUOp == 2'b10) && (Funct3 == 3'b010));  // R\I-<(slti ou slt)*/
 
-  assign Operation[0] = 0;  
-  assign Operation[1] = 0;
+  assign Operation[3] = 0;  
 
   assign Operation[2] =  0;  
 
-  assign Operation[3] = 0;  
+  assign Operation[1] = 0;
+
+  assign Operation[0] = 0;  
+
+
 endmodule
