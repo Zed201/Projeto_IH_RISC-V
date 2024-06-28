@@ -205,14 +205,12 @@ module Datapath #(
       FBmuxSel,
       FBmux_Result
   );
-  /*mux2 #(32) srcbmux (
+  mux2 #(32) srcbmux (
       FBmux_Result,
       B.ImmG,
       B.ALUSrc,
       SrcB
-  );*/
-  // TODO: Gambiarra que fiz para funcionar o immgGen, mas ele vai bugar depois, descobrir pq os imggem nao estao funcionando
-  assign SrcB = B.ImmG;
+  );
   
   alu alu_module (
       FAmux_Result,

@@ -16,37 +16,30 @@ module ALUController (
     2. less_than(jump)
     3. greater_than(jump)
     4. addi (type I)
-    5. sub (type R) funct3=000 e funct7=0100000 
-    6. xor (type I) funct3=100 e funct7=0000000
-    7. or (type R) funct3=110 e funct7=0000000
+    5. sub (type R)
+    6. xor (type I)
+    7. or (type R)
     8. slt (set less than, basicamente rd <- (rs1 < rs2)? 1 : 0) (type R)
     9. slti (set less than imediate) (type I)
     10. srai (shift rigth aritimetic imediate) (type I)
     11. srli (shift rigth logic imediate) (type I)
     12. slli (shift left logic imediate) (type I)
     */
-  assign Operation[3] = (ALUOp == 2'b01) ||  // BEQ
-      ((ALUOp == 2'b10) && (Funct3 == 3'b010)) ||  // R\I-<(slti ou slt)
-      ((ALUOp == 2'b10) && (Funct3 == 3'b100) && (Funct7 == 7'b0000000)); // R\I-xor
-  
-  assign Operation[2] =  ((ALUOp==2'b10) && (Funct3==3'b101) && (Funct7==7'b0000000)) || // R\I->>(srli)
-      ((ALUOp == 2'b10) && (Funct3 == 3'b101) && (Funct7 == 7'b0100000)) ||  // R\I->>>(srai)
-      ((ALUOp == 2'b10) && (Funct3 == 3'b001)) ||  // R\I-<<(slli)
-      ((ALUOp == 2'b10) && (Funct3 == 3'b010)) ||  // R\I-<(slti ou slt, slt tem func7-000000, o slti n tem func7)
-      ((ALUOp == 2'b10) && (Funct3 == 3'b000) && (Funct7 == 7'b0100000)); // R/I-sub
+  assign Operation[0] = ((ALUOp == 2'b10) && (Funct3 == 3'b110)) ||  // R\I-or
+      ((ALUOp == 2'b10) && (Funct3 == 3'b101) && (Funct7 == 7'b0000000)) ||  // R\I->>(srli)
+      ((ALUOp == 2'b10) && (Funct3 == 3'b101) && (Funct7 == 7'b0100000));  // R\I->>>(srai)
 
   assign Operation[1] = (ALUOp == 2'b00) ||  // LW\SW
       ((ALUOp == 2'b10) && (Funct3 == 3'b000)) ||  // R\I-add
-      ((ALUOp == 2'b10) && (Funct3 == 3'b101) && (Funct7 == 7'b0100000)) ||  // R\I->>>(srai)
-      ((ALUOp == 2'b10) && (Funct3 == 3'b000) && (Funct7 == 7'b0100000)); // R/I-sub
+      ((ALUOp == 2'b10) && (Funct3 == 3'b101) && (Funct7 == 7'b0100000));  // R\I->>>(srai)
 
-  assign Operation[0] = ((ALUOp == 2'b10) && (Funct3 == 3'b110)) ||  // R\I-or
-      ((ALUOp == 2'b10) && (Funct3 == 3'b101) && (Funct7 == 7'b0000000)) ||  // R\I->>(srli)
+  assign Operation[2] =  ((ALUOp==2'b10) && (Funct3==3'b101) && (Funct7==7'b0000000)) || // R\I->>(srli)
       ((ALUOp == 2'b10) && (Funct3 == 3'b101) && (Funct7 == 7'b0100000)) ||  // R\I->>>(srai)
-      ((ALUOp == 2'b10) && (Funct3 == 3'b100) && (Funct7 == 7'b0000000)); // R\I-xor
-
+      ((ALUOp == 2'b10) && (Funct3 == 3'b001)) ||  // R\I-<<(slli)
+      ((ALUOp == 2'b10) && (Funct3 == 3'b010));  // R\I-<(slti ou slt, slt tem func7-000000, o slti n tem func7)
 // TODO: ver como diferencia quando tem ou nao func7, principalmente essa duvida do slti e do slt
 
 // para implementar os outros tem que verificar o funct3
-  
+  assign Operation[3] = (ALUOp == 2'b01) ||  // BEQ
+      ((ALUOp == 2'b10) && (Funct3 == 3'b010));  // R\I-<(slti ou slt)
 endmodule
