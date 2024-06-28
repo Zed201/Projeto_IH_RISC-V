@@ -14,14 +14,39 @@ module alu#(
     
         always_comb
         begin
-                // fazer as combinações aqui, tomando cuidado para combinar
             case(Operation)
-            4'b0000:        // AND
-                    ALUResult = SrcA & SrcB;
-            4'b0010:        // ADD
-                    ALUResult = $signed(SrcA) + $signed(SrcB);
-            4'b1000:        // Equal/beq
-                    ALUResult = (SrcA == SrcB) ? 1 : 0;
+            4'b0000:        //
+                    ALUResult = 0;
+            4'b0001:        //
+                    ALUResult = 0;
+            4'b0010:        //
+                    ALUResult = 0;
+            4'b0011:        //
+                    ALUResult = 0;
+            4'b0100:        //
+                    ALUResult = 0;
+            4'b0101:        //
+                    ALUResult = 0;
+            4'b0110:        //
+                    ALUResult = 0;
+            4'b0111:        //
+                    ALUResult = 0;
+            4'b1000:        //
+                    ALUResult = 0;
+            4'b1001:        //
+                    ALUResult = 0;
+            4'b1010:        //
+                    ALUResult = 0;
+            4'b1011:        //
+                    ALUResult = 0;
+            4'b1100:        //
+                    ALUResult = 0;
+            4'b1101:        //
+                    ALUResult = 0;
+            4'b1110:        //
+                    ALUResult = 0;
+            4'b1111:        //
+                    ALUResult = 0;
             default:
                     ALUResult = 0;
             endcase
