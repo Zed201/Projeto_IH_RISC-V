@@ -1,3 +1,5 @@
 lw x4,0(x0)
 lw x5,4(x0)
-or x6,x5,x4
+xor x4,x4,x5
+sub x4,x4,x5
+or x4,x4,x5
