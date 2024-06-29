@@ -26,7 +26,7 @@ module alu#(
             4'b0100:        // and
                     ALUResult = SrcA & SrcB;
             4'b0101:        // slt/i
-                    ALUResult = (SrcA < SrcB)? 32'b1 : 32'b0;
+                    ALUResult = ($signed(SrcA) < $signed(SrcB))? 32'b1 : 32'b0;
             4'b0110:        // srai(atenção)
                     ALUResult = $signed(SrcA) >>> $signed(SrcB[4:0]);
             4'b0111:        // srli

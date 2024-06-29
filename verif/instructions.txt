@@ -1,2 +1,2 @@
-addi x4,x0,19
-addi x5,x0,1023
+addi x4,x0,23
+slti x5,x4,10
