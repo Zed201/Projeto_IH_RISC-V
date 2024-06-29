@@ -41,7 +41,7 @@ module ALUController (
     (ALUOp == 2'b10) && (Funct3 == 3'b010) && (Funct7 == 7'b0000000)
 
     9. slti (set less than imediate) (type I) // fazer o mesmo do slt - 
-    (ALUOp == 2'b10) && (Funct3 == 3'b010) && (Funct7 == 7'b0000000)
+    (ALUOp == 2'b10) && (Funct3 == 3'b010)
 
     10. srai (shift rigth aritimetic imediate) (type I) - 
     (ALUOp == 2'b10) && (Funct3 == 3'b101) && (Funct7 == 7'b0100000)
@@ -53,16 +53,16 @@ module ALUController (
     (ALUOp == 2'b10) && (Funct3 == 3'b001) && (Funct7 == 7'b0000000)
 
     1. not_equal(type B) bne 
-    (ALUOp == 2'b01) && (Funct3 == 3'b001) && (Funct7 == 7'b0000000)
+    (ALUOp == 2'b01) && (Funct3 == 3'b001)
 
     2. less_than(type B) blt 
-    (ALUOp == 2'b01) && (Funct3 == 3'b100) && (Funct7 == 7'b0000000)
+    (ALUOp == 2'b01) && (Funct3 == 3'b100)
 
     3. greater_than(type B) bge 
-    (ALUOp == 2'b01) && (Funct3 == 3'b101) && (Funct7 == 7'b0000000)
+    (ALUOp == 2'b01) && (Funct3 == 3'b101)
 
     13. beq 
-    (ALUOp == 2'b01) && (Funct3 == 3'b000) && (Funct7 == 7'b0000000)
+    (ALUOp == 2'b01) && (Funct3 == 3'b000)
 
     16. lw/sw_load (ALUOp == 2'b00) 
     
@@ -71,27 +71,27 @@ module ALUController (
                         (ALUOp == 2'b10) && (Funct3 == 3'b110) && (Funct7 == 7'b0000000) ||
                         (ALUOp == 2'b10) && (Funct3 == 3'b010) ||
                         (ALUOp == 2'b10) && (Funct3 == 3'b101) && (Funct7 == 7'b0000000) ||
-                        (ALUOp == 2'b01) && (Funct3 == 3'b100) && (Funct7 == 7'b0000000) ||
-                        (ALUOp == 2'b01) && (Funct3 == 3'b000) && (Funct7 == 7'b0000000);
+                        (ALUOp == 2'b01) && (Funct3 == 3'b100) ||
+                        (ALUOp == 2'b01) && (Funct3 == 3'b000);
 
   assign Operation[1] = (ALUOp == 2'b10) && (Funct3 == 3'b100) && (Funct7 == 7'b0000000) ||
                         (ALUOp == 2'b10) && (Funct3 == 3'b110) && (Funct7 == 7'b0000000) ||
                         (ALUOp == 2'b10) && (Funct3 == 3'b101) && (Funct7 == 7'b0100000) ||
                         (ALUOp == 2'b10) && (Funct3 == 3'b101) && (Funct7 == 7'b0000000) ||
-                        (ALUOp == 2'b01) && (Funct3 == 3'b001) && (Funct7 == 7'b0000000) ||
-                        (ALUOp == 2'b01) && (Funct3 == 3'b100) && (Funct7 == 7'b0000000);
+                        (ALUOp == 2'b01) && (Funct3 == 3'b001) ||
+                        (ALUOp == 2'b01) && (Funct3 == 3'b100);
 
   assign Operation[2] = (ALUOp == 2'b10) && (Funct3 == 3'b111) && (Funct7 == 7'b0000000) ||
                         (ALUOp == 2'b10) && (Funct3 == 3'b010) ||
                         (ALUOp == 2'b10) && (Funct3 == 3'b101) && (Funct7 == 7'b0100000) ||
                         (ALUOp == 2'b10) && (Funct3 == 3'b101) && (Funct7 == 7'b0000000) ||
-                        (ALUOp == 2'b01) && (Funct3 == 3'b101) && (Funct7 == 7'b0000000) ||
-                        (ALUOp == 2'b01) && (Funct3 == 3'b000) && (Funct7 == 7'b0000000);  
+                        (ALUOp == 2'b01) && (Funct3 == 3'b101) ||
+                        (ALUOp == 2'b01) && (Funct3 == 3'b000);  
 
   assign Operation[3] = (ALUOp == 2'b10) && (Funct3 == 3'b001) && (Funct7 == 7'b0000000) ||
-                        (ALUOp == 2'b01) && (Funct3 == 3'b001) && (Funct7 == 7'b0000000) ||
-                        (ALUOp == 2'b01) && (Funct3 == 3'b100) && (Funct7 == 7'b0000000) ||
-                        (ALUOp == 2'b01) && (Funct3 == 3'b101) && (Funct7 == 7'b0000000) ||
-                        (ALUOp == 2'b01) && (Funct3 == 3'b000) && (Funct7 == 7'b0000000);  
+                        (ALUOp == 2'b01) && (Funct3 == 3'b001) ||
+                        (ALUOp == 2'b01) && (Funct3 == 3'b100) ||
+                        (ALUOp == 2'b01) && (Funct3 == 3'b101) ||
+                        (ALUOp == 2'b01) && (Funct3 == 3'b000);  
 
 endmodule
