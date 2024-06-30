@@ -65,33 +65,42 @@ module ALUController (
     (ALUOp == 2'b01) && (Funct3 == 3'b000)
 
     16. lw/sw_load (ALUOp == 2'b00) 
+
+    17. lui (ALUOp == 2'b11) && (Funct3 != 7'b000)
     
     */
-  assign Operation[0] = (ALUOp == 2'b10) && (Funct3 == 3'b000) && (Funct7 == 7'b0100000) ||
-                        (ALUOp == 2'b10) && (Funct3 == 3'b110) && (Funct7 == 7'b0000000) ||
-                        (ALUOp == 2'b10) && (Funct3 == 3'b010) ||
-                        (ALUOp == 2'b10) && (Funct3 == 3'b101) && (Funct7 == 7'b0000000) ||
-                        (ALUOp == 2'b01) && (Funct3 == 3'b100) ||
-                        (ALUOp == 2'b01) && (Funct3 == 3'b000);
 
-  assign Operation[1] = (ALUOp == 2'b10) && (Funct3 == 3'b100) && (Funct7 == 7'b0000000) ||
-                        (ALUOp == 2'b10) && (Funct3 == 3'b110) && (Funct7 == 7'b0000000) ||
-                        (ALUOp == 2'b10) && (Funct3 == 3'b101) && (Funct7 == 7'b0100000) ||
-                        (ALUOp == 2'b10) && (Funct3 == 3'b101) && (Funct7 == 7'b0000000) ||
-                        (ALUOp == 2'b01) && (Funct3 == 3'b001) ||
-                        (ALUOp == 2'b01) && (Funct3 == 3'b100);
+    // always @(ALUOp, Funct3, Funct7) begin
+    //     $display("Aluop: %b, f3: %b, f7: %b\n", ALUOp, Funct3, Funct7);
+    // end
+  assign Operation[0] = ((ALUOp == 2'b10) && (Funct3 == 3'b000) && (Funct7 == 7'b0100000)) ||
+                        ((ALUOp == 2'b10) && (Funct3 == 3'b110) && (Funct7 == 7'b0000000)) ||
+                        ((ALUOp == 2'b10) && (Funct3 == 3'b010)) ||
+                        ((ALUOp == 2'b10) && (Funct3 == 3'b101) && (Funct7 == 7'b0000000)) ||
+                        ((ALUOp == 2'b01) && (Funct3 == 3'b100)) ||
+                        ((ALUOp == 2'b01) && (Funct3 == 3'b000));
 
-  assign Operation[2] = (ALUOp == 2'b10) && (Funct3 == 3'b111) && (Funct7 == 7'b0000000) ||
-                        (ALUOp == 2'b10) && (Funct3 == 3'b010) ||
-                        (ALUOp == 2'b10) && (Funct3 == 3'b101) && (Funct7 == 7'b0100000) ||
-                        (ALUOp == 2'b10) && (Funct3 == 3'b101) && (Funct7 == 7'b0000000) ||
-                        (ALUOp == 2'b01) && (Funct3 == 3'b101) ||
-                        (ALUOp == 2'b01) && (Funct3 == 3'b000);  
+  assign Operation[1] = ((ALUOp == 2'b10) && (Funct3 == 3'b100) && (Funct7 == 7'b0000000)) ||
+                        ((ALUOp == 2'b10) && (Funct3 == 3'b110) && (Funct7 == 7'b0000000)) ||
+                        ((ALUOp == 2'b10) && (Funct3 == 3'b101) && (Funct7 == 7'b0100000)) ||
+                        ((ALUOp == 2'b10) && (Funct3 == 3'b101) && (Funct7 == 7'b0000000)) ||
+                        ((ALUOp == 2'b01) && (Funct3 == 3'b001)) ||
+                        ((ALUOp == 2'b01) && (Funct3 == 3'b100)) ||
+                        ((ALUOp == 2'b11));
 
-  assign Operation[3] = (ALUOp == 2'b10) && (Funct3 == 3'b001) && (Funct7 == 7'b0000000) ||
-                        (ALUOp == 2'b01) && (Funct3 == 3'b001) ||
-                        (ALUOp == 2'b01) && (Funct3 == 3'b100) ||
-                        (ALUOp == 2'b01) && (Funct3 == 3'b101) ||
-                        (ALUOp == 2'b01) && (Funct3 == 3'b000);  
+  assign Operation[2] = ((ALUOp == 2'b10) && (Funct3 == 3'b111) && (Funct7 == 7'b0000000)) ||
+                        ((ALUOp == 2'b10) && (Funct3 == 3'b010)) ||
+                        ((ALUOp == 2'b10) && (Funct3 == 3'b101) && (Funct7 == 7'b0100000)) ||
+                        ((ALUOp == 2'b10) && (Funct3 == 3'b101) && (Funct7 == 7'b0000000)) ||
+                        ((ALUOp == 2'b01) && (Funct3 == 3'b101)) ||
+                        ((ALUOp == 2'b01) && (Funct3 == 3'b000)) ||
+                        ((ALUOp == 2'b11));  
+
+  assign Operation[3] = ((ALUOp == 2'b10) && (Funct3 == 3'b001) && (Funct7 == 7'b0000000)) ||
+                        ((ALUOp == 2'b01) && (Funct3 == 3'b001)) ||
+                        ((ALUOp == 2'b01) && (Funct3 == 3'b100)) ||
+                        ((ALUOp == 2'b01) && (Funct3 == 3'b101)) ||
+                        ((ALUOp == 2'b01) && (Funct3 == 3'b000)) ||
+                        ((ALUOp == 2'b11));
 
 endmodule

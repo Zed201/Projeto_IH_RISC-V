@@ -19,19 +19,24 @@ module Controller (
     output logic Branch  //0: branch is not taken; 1: branch is taken
 );
 
-  logic [6:0] R_TYPE, LW, SW, BR, I_TYPE;
+  logic [6:0] R_TYPE, LW, SW, BR, I_TYPE, LUI;
   assign I_TYPE = 7'b0010011;  //addi, andi, ori, xori, slli, srli, srai
   assign R_TYPE = 7'b0110011;  //add,and
   assign LW = 7'b0000011;  //lw
   assign SW = 7'b0100011;  //sw
-  assign BR = 7'b1100011;  //beq // mudar por aqui os de branch
+  assign BR = 7'b1100011;  //beq, bne
+  assign LUI = 7'b0110111;
 
-  assign ALUSrc = (Opcode == LW || Opcode == SW || Opcode == I_TYPE);
+  // always @(Opcode) begin
+  //   $display("Opecode = %b\n", Opcode);
+  // end
+
+  assign ALUSrc = (Opcode == LW || Opcode == SW || Opcode == I_TYPE || Opcode == LUI);
   assign MemtoReg = (Opcode == LW);
-  assign RegWrite = (Opcode == R_TYPE || Opcode == LW || Opcode == I_TYPE);
+  assign RegWrite = (Opcode == R_TYPE || Opcode == LW || Opcode == I_TYPE || Opcode == LUI);
   assign MemRead = (Opcode == LW);
   assign MemWrite = (Opcode == SW);
-  assign ALUOp[0] = (Opcode == BR);
-  assign ALUOp[1] = (Opcode == R_TYPE || Opcode == I_TYPE);
+  assign ALUOp[0] = (Opcode == BR || Opcode == LUI);
+  assign ALUOp[1] = (Opcode == R_TYPE || Opcode == I_TYPE || Opcode == LUI);
   assign Branch = (Opcode == BR);
 endmodule

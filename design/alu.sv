@@ -43,8 +43,8 @@ module alu#(
                     ALUResult = ($signed(SrcA) >= $signed(SrcB))? 1 : 0;
             4'b1101:        // beq
                     ALUResult = (SrcA == SrcB)? 1 : 0;
-            4'b1110:        //
-                    ALUResult = 0;
+            4'b1110:     // LUI
+                    ALUResult = SrcB;
             4'b1111:        //
                     ALUResult = 0;
             default:
