@@ -29,7 +29,7 @@ module datamemory #(
   );
 
   always_ff @(*) begin
-    raddress = {{22{1'b0}}, a[8:2], {2{1'b0}}};
+    raddress = {{22{1'b0}}, a[8:2], {2{1'b0}}}; // basicamente é como se ele avança-se o contador apenas contando de 4 em 4, fazer logica parecida com os de lb, lh, lbh, sb, sh
     waddress = {{22{1'b0}}, a[8:2], {2{1'b0}}};
     Datain = wd;
     Wr = 4'b0000;

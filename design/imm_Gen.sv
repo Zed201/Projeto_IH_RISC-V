@@ -13,8 +13,8 @@ module imm_Gen (
       7'b1101111: /* J-type - JAL*/
       Imm_out = {inst_code[31] ? 12'hFFF : 12'b0, inst_code[19:12], inst_code[20], inst_code[30:21], 1'b0}; // TODO: testar
 
-      7'b0110111: /* U-type */
-      Imm_out = {inst_code[31:12], 12'b0}; // TODO: testar
+      7'b0110111: /* U-type 0 - LUI*/
+      Imm_out = {inst_code[31:12], 12'b0}; 
       
       7'b0000011:  /*I-type load part*/
       Imm_out = {inst_code[31] ? 20'hFFFFF : 20'b0, inst_code[31:20]};

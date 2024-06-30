@@ -34,7 +34,7 @@ module alu#(
             4'b1000:        // slli
                     ALUResult = $signed(SrcA) << $signed(SrcB[4:0]);
             4'b1001:        // FEITO PARA load e store
-                    ALUResult = 0;
+                    ALUResult = 0; // so n fazer nd para ficar organizado
             4'b1010:        // bne 
                     ALUResult = (SrcA != SrcB)? 1 : 0;
             4'b1011:        // blt
