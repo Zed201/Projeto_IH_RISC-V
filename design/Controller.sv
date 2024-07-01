@@ -22,7 +22,7 @@ module Controller (
   logic [6:0] R_TYPE, LW, SW, BR, I_TYPE, LUI;
   assign I_TYPE = 7'b0010011;  //addi, andi, ori, xori, slli, srli, srai
   assign R_TYPE = 7'b0110011;  //add,and
-  assign LW = 7'b0000011;  //lw
+  assign LW = 7'b0000011;  //lw, lb, lbu, lh
   assign SW = 7'b0100011;  //sw
   assign BR = 7'b1100011;  //beq, bne
   assign LUI = 7'b0110111;
