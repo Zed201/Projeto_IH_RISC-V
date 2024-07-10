@@ -38,7 +38,8 @@ module Datapath #(
     output logic [DATA_W-1:0] rd_data,  // read data
 
     input logic jal,
-    input logic jalr
+    input logic jalr,
+    input logic Halt
 );
 
   logic [PC_W-1:0] PC, PCPlus4, Next_PC;
@@ -78,7 +79,8 @@ module Datapath #(
       reset,
       Next_PC,
       Reg_Stall,
-      PC
+      PC,
+      B.Halt
   );
   instructionmemory instr_mem (
       clk,
@@ -158,6 +160,7 @@ module Datapath #(
       B.Curr_Instr <= A.Curr_Instr;  //debug tmp
       B.jal <= 0;
       B.jalr <= 0;
+      B.Halt <= 0;
     end else begin
       B.ALUSrc <= ALUsrc;
       B.MemtoReg <= MemtoReg;
@@ -178,6 +181,7 @@ module Datapath #(
       B.Curr_Instr <= A.Curr_Instr;  //debug tmp
       B.jal <= jal;
       B.jalr <= jalr;
+      B.Halt <= Halt;
     end
   end
 
@@ -240,7 +244,8 @@ module Datapath #(
       BrPC,
       PcSel,
       B.jal,
-      B.jalr
+      B.jalr,
+      B.Halt
   );
 
   // EX_MEM_Reg C;

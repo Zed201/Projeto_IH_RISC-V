@@ -18,10 +18,11 @@ module Controller (
     output logic [1:0] ALUOp,  //00: LW/SW; 01:Branch; 10: Rtype
     output logic Branch,  //0: branch is not taken; 1: branch is taken
     output logic jal,
-    output logic jalr
+    output logic jalr,
+    output logic Halt
 );
 
-  logic [6:0] R_TYPE, LW, SW, BR, I_TYPE, LUI, JAL, JALR;
+  logic [6:0] R_TYPE, LW, SW, BR, I_TYPE, LUI, JAL, JALR, HALT;
   assign I_TYPE = 7'b0010011;  //addi, andi, ori, xori, slli, srli, srai
   assign R_TYPE = 7'b0110011;  //add,and
   assign LW = 7'b0000011;  //lw, lb, lbu, lh
@@ -35,6 +36,8 @@ module Controller (
   assign jal = (Opcode == JAL);
   assign jalr = (Opcode == JALR);
 
+  assign HALT = 7'b1111111;
+
   // always @(Opcode) begin
   //   $display("Opecode = %b\n", Opcode);
   // end
@@ -47,4 +50,6 @@ module Controller (
   assign ALUOp[0] = (Opcode == BR || Opcode == LUI || Opcode == JAL || Opcode == JALR);
   assign ALUOp[1] = (Opcode == R_TYPE || Opcode == I_TYPE || Opcode == LUI || Opcode == JAL || Opcode == JALR);
   assign Branch = (Opcode == BR);
+  assign Halt = (Opcode == HALT);
+  
 endmodule
