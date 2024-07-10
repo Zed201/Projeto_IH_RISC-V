@@ -10,8 +10,19 @@ module BranchUnit #(
     output logic [31:0] PC_Imm,
     output logic [31:0] PC_Four,
     output logic [31:0] BrPC,
-    output logic PcSel
+    output logic PcSel,
+
+    input logic jal,
+    input logic jalr
 );
+
+//   always @(jal) begin
+//     $display("jal = %b\n", jal);
+//   end
+
+// always @(jalr) begin
+//     $display("jalr = %b\n", jalr);
+//   end
 
   logic Branch_Sel;
   logic [31:0] PC_Full;

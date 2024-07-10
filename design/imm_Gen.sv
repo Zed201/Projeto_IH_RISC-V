@@ -15,6 +15,7 @@ module imm_Gen (
 
       7'b1100111: /* I-type - JALR*/
       Imm_out = {inst_code[31] ? 20'hFFFFF : 20'b0, inst_code[31:20]};
+
       7'b0110111: /* U-type 0 - LUI*/
       Imm_out = {inst_code[31:12], 12'b0}; 
       
