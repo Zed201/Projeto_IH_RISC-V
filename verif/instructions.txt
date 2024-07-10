@@ -1,4 +1,3 @@
-addi x4,x0,-10
-addi x5,x0,10
-bne x5,x4,-4
-addi x5,x0,3
+jal x1,16
+addi x1,x0,5
+jalr x2,x1,10
