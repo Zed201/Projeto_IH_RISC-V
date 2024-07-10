@@ -16,13 +16,17 @@ module BranchUnit #(
     input logic jalr
 );
 
-//   always @(jal) begin
-//     $display("jal = %b\n", jal);
-//   end
+  always @(jal) begin
+    $display("jal = %b, Im = %d\n", jal, Imm);
+  end
 
-// always @(jalr) begin
-//     $display("jalr = %b\n", jalr);
-//   end
+always @(jalr) begin
+    $display("jalr = %b, Im %d\n", jalr, Imm);
+  end
+
+// always @(Imm) begin
+//     $display("jal = %d - Imm = %d -> pc_imm:%d\n", jal, Imm, PC_Imm);
+// end
 
   logic Branch_Sel;
   logic [31:0] PC_Full;
@@ -31,7 +35,8 @@ module BranchUnit #(
   // provavel nao precise mudar aqui pois ele ja pega o resultado de uma operação
   assign PC_Imm = PC_Full + Imm;
   assign PC_Four = PC_Full + 32'b100;
-  assign Branch_Sel = Branch && AluResult[0];  // 0:Branch is taken; 1:Branch is not taken
+  assign Branch_Sel = (Branch && AluResult[0]) || jal;  // 0:Branch is taken; 1:Branch is not taken
+  //assign Branch_Sel = Branch && AluResult[0];  // 0:Branch is taken; 1:Branch is not taken
 
   assign BrPC = (Branch_Sel) ? PC_Imm : 32'b0;  // Branch -> PC+Imm   // Otherwise, BrPC value is not important
   assign PcSel = Branch_Sel;  // 1:branch is taken; 0:branch is not taken(choose pc+4)

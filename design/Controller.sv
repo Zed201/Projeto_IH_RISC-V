@@ -39,7 +39,7 @@ module Controller (
   //   $display("Opecode = %b\n", Opcode);
   // end
 
-  assign ALUSrc = (Opcode == LW || Opcode == SW || Opcode == I_TYPE || Opcode == LUI);
+  assign ALUSrc = (Opcode == LW || Opcode == SW || Opcode == I_TYPE || Opcode == LUI || Opcode == JALR || Opcode == JAL);
   assign MemtoReg = (Opcode == LW);
   assign RegWrite = (Opcode == R_TYPE || Opcode == LW || Opcode == I_TYPE || Opcode == LUI || Opcode == JALR || Opcode == JAL);
   assign MemRead = (Opcode == LW);

@@ -24,6 +24,8 @@ package Pipe_Buf_Reg_PKG;
     logic [2:0]  func3;
     logic [6:0]  func7;
     logic [31:0] Curr_Instr;
+    logic jal;
+    logic jalr;
   } id_ex_reg;
 
   // Reg C

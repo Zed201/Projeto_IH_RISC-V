@@ -4,9 +4,9 @@ module imm_Gen (
     input  logic [31:0] inst_code,
     output logic [31:0] Imm_out
 );
-  always @(inst_code) begin
-      $display("numero: %d\n", Imm_out);
-  end
+  // always @(inst_code) begin
+  //     $display("numero: %d\n", Imm_out);
+  // end
 
   always_comb
     case (inst_code[6:0])

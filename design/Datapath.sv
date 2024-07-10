@@ -92,6 +92,7 @@ module Datapath #(
         begin
       A.Curr_Pc <= 0;
       A.Curr_Instr <= 0;
+
     end
         else if (!Reg_Stall)    // stall
         begin
@@ -155,6 +156,8 @@ module Datapath #(
       B.func3 <= 0;
       B.func7 <= 0;
       B.Curr_Instr <= A.Curr_Instr;  //debug tmp
+      B.jal <= 0;
+      B.jalr <= 0;
     end else begin
       B.ALUSrc <= ALUsrc;
       B.MemtoReg <= MemtoReg;
@@ -173,6 +176,8 @@ module Datapath #(
       B.func3 <= A.Curr_Instr[14:12];
       B.func7 <= A.Curr_Instr[31:25];
       B.Curr_Instr <= A.Curr_Instr;  //debug tmp
+      B.jal <= jal;
+      B.jalr <= jalr;
     end
   end
 
@@ -221,8 +226,8 @@ module Datapath #(
       SrcB,
       ALU_CC,
       ALUResult,
-      jal,
-      jalr,
+      B.jal,
+      B.jalr,
       B.Curr_Pc
   );
   BranchUnit #(9) brunit (
@@ -234,8 +239,8 @@ module Datapath #(
       Old_PC_Four,
       BrPC,
       PcSel,
-      jal,
-      jalr
+      B.jal,
+      B.jalr
   );
 
   // EX_MEM_Reg C;
