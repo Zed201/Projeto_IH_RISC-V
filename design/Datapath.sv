@@ -35,7 +35,10 @@ module Datapath #(
     output logic reade,  // read enable
     output logic [DM_ADDRESS-1:0] addr,  // address
     output logic [DATA_W-1:0] wr_data,  // write data
-    output logic [DATA_W-1:0] rd_data  // read data
+    output logic [DATA_W-1:0] rd_data,  // read data
+
+    input logic jal,
+    input logic jalr
 );
 
   logic [PC_W-1:0] PC, PCPlus4, Next_PC;
@@ -50,6 +53,8 @@ module Datapath #(
   logic [1:0] FBmuxSel;
   logic [DATA_W-1:0] FAmux_Result;
   logic [DATA_W-1:0] FBmux_Result;
+    logic [31:0] jalr_src;
+   // TODO: Talvez modificar isso daqui para fazer o halt
   logic Reg_Stall;  //1: PC fetch same, Register not update
 
   if_id_reg A;
@@ -151,6 +156,9 @@ module Datapath #(
       B.func3 <= 0;
       B.func7 <= 0;
       B.Curr_Instr <= A.Curr_Instr;  //debug tmp
+      B.jal <= 0;
+      B.jalr <= 0;
+
     end else begin
       B.ALUSrc <= ALUsrc;
       B.MemtoReg <= MemtoReg;
@@ -169,6 +177,8 @@ module Datapath #(
       B.func3 <= A.Curr_Instr[14:12];
       B.func7 <= A.Curr_Instr[31:25];
       B.Curr_Instr <= A.Curr_Instr;  //debug tmp
+      B.jal <= jal;
+      B.jalr <= jalr;     
     end
   end
 
@@ -212,11 +222,16 @@ module Datapath #(
       SrcB
   );
   
+
   alu alu_module (
       FAmux_Result,
       SrcB,
       ALU_CC,
-      ALUResult
+      ALUResult,
+      B.jal,
+      B.jalr,
+      B.Curr_Pc,
+      jalr_src
   );
   BranchUnit #(9) brunit (
       B.Curr_Pc,
@@ -226,7 +241,10 @@ module Datapath #(
       BrImm,
       Old_PC_Four,
       BrPC,
-      PcSel
+      PcSel,
+      B.jal,
+      B.jalr,
+      jalr_src
   );
 
   // EX_MEM_Reg C;

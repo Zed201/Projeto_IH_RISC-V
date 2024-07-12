@@ -29,15 +29,29 @@ module datamemory #(
   );
 
   always_ff @(*) begin
-    raddress = {{22{1'b0}}, a[8:2], {2{1'b0}}}; // basicamente é como se ele avança-se o contador apenas contando de 4 em 4, fazer logica parecida com os de lb, lh, lbh, sb, sh
+    //raddress = {{22{1'b0}}, a[8:2], {2{1'b0}}}; // basicamente é como se ele avança-se o contador apenas contando de 4 em 4, fazer logica parecida com os de lb, lh, lbh, sb, sh
     waddress = {{22{1'b0}}, a[8:2], {2{1'b0}}};
     Datain = wd;
     Wr = 4'b0000;
-
+    // O read ele basicamente le de 4 em 4 bytes, ou seja de word em word, para acertar devemos acertar os locais de leitura
     if (MemRead) begin
       case (Funct3)
-        3'b010:  //LW
-        rd <= Dataout;
+        3'b010: begin  //LW
+          raddress <= {{22{1'b0}}, a[8:2], {2{1'b0}}}; // corta os endereços de 4 em 4
+          rd <= Dataout;
+        end
+        3'b001: begin  //LH
+          raddress <= {{22{1'b0}}, a[8:1], {1'b0}}; // corta os endereços de 2 em 2
+          rd <= $signed(Dataout[15:0]);
+        end
+        3'b100: begin  //LBU
+          raddress <= {{22{1'b0}}, a}; // corta os endereços de 1 em 1 em unsigned
+          rd <= $unsigned(Dataout[7:0]); // acertar unsigned
+        end
+        3'b000: begin  //LB
+          raddress <= {{22{1'b0}}, a}; // corta os endereços de 1 em 1 com sinal
+          rd <= $signed(Dataout[7:0]);
+        end
         default: rd <= Dataout;
       endcase
     end else if (MemWrite) begin

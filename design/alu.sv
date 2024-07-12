@@ -2,15 +2,22 @@
 
 module alu#(
         parameter DATA_WIDTH = 32,
-        parameter OPCODE_LENGTH = 4
+        parameter OPCODE_LENGTH = 4,
+        parameter PC_W = 9
         )
         (
         input logic [DATA_WIDTH-1:0]    SrcA,
         input logic [DATA_WIDTH-1:0]    SrcB,
 
         input logic [OPCODE_LENGTH-1:0]    Operation,
-        output logic[DATA_WIDTH-1:0] ALUResult
+        output logic[DATA_WIDTH-1:0] ALUResult,
+
+        input logic jal,
+        input logic jalr,
+        input logic [PC_W-1:0] Curr_Pc,
+        output logic [DATA_WIDTH-1:0] jalr_src
         );
+
         // TODO: Verificações de negativo nos de deslocamento
         always_comb
         begin
@@ -45,8 +52,16 @@ module alu#(
                     ALUResult = (SrcA == SrcB)? 1 : 0;
             4'b1110:     // LUI
                     ALUResult = SrcB;
-            4'b1111:        //
-                    ALUResult = 0;
+            4'b1111:  begin      // JAL e JALR(guarda pc + 4 no reg que ele ta usando na operação)
+                    //ALUResult = {23'b0, Curr_Pc + 9'b100};
+                    
+                    ALUResult = {23'b0, Curr_Pc + 9'b100};
+                    
+                    if(jalr == 1) begin
+                        //$display("A:%d b:%d\n->", SrcA, SrcB, SrcA + SrcB);
+                        jalr_src = SrcA + SrcB;
+                    end
+            end
             default:
                     ALUResult = 0;
             endcase
