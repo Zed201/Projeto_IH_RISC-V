@@ -14,7 +14,8 @@ module alu#(
 
         input logic jal,
         input logic jalr,
-        input logic [PC_W-1:0] Curr_Pc
+        input logic [PC_W-1:0] Curr_Pc,
+        output logic [DATA_WIDTH-1:0] jalr_src
         );
 
         // TODO: Verificações de negativo nos de deslocamento
@@ -51,8 +52,16 @@ module alu#(
                     ALUResult = (SrcA == SrcB)? 1 : 0;
             4'b1110:     // LUI
                     ALUResult = SrcB;
-            4'b1111:        // JAL e JALR(guarda pc + 4 no reg que ele ta usando na operação)
+            4'b1111:  begin      // JAL e JALR(guarda pc + 4 no reg que ele ta usando na operação)
+                    //ALUResult = {23'b0, Curr_Pc + 9'b100};
+                    
                     ALUResult = {23'b0, Curr_Pc + 9'b100};
+                    
+                    if(jalr == 1) begin
+                        //$display("A:%d b:%d\n->", SrcA, SrcB, SrcA + SrcB);
+                        jalr_src = SrcA + SrcB;
+                    end
+            end
             default:
                     ALUResult = 0;
             endcase
