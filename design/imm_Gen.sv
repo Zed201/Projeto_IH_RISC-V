@@ -4,14 +4,14 @@ module imm_Gen (
     input  logic [31:0] inst_code,
     output logic [31:0] Imm_out
 );
-  always @(inst_code) begin
-      $display("numero: %d\n", Imm_out);
-  end
+  // always @(inst_code) begin
+  //     $display("numero: %d\n", Imm_out);
+  // end
 
   always_comb
     case (inst_code[6:0])
       7'b1101111: /* J-type - JAL*/
-      Imm_out = {inst_code[31] ? 12'hFFF : 12'b0, inst_code[19:12], inst_code[20], inst_code[30:21], 1'b0}; // TODO: testar
+      Imm_out = {inst_code[31] ? 12'hFFF : 12'b0, inst_code[19:12], inst_code[20], inst_code[30:21], 1'b0}; // TODO: testar(Contando de 2 em 2, testar isso)
 
       7'b1100111: /* I-type - JALR*/
       Imm_out = {inst_code[31] ? 20'hFFFFF : 20'b0, inst_code[31:20]};
