@@ -38,6 +38,7 @@ module riscv #(
       MemWrite,
       ALUop,
       Branch,
+
       jal,
       jalr
   );
@@ -73,6 +74,7 @@ module riscv #(
       addr,
       wr_data,
       rd_data,
+      
       jal,
       jalr
   );

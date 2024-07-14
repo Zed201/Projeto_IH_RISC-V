@@ -11,11 +11,11 @@ module alu#(
 
         input logic [OPCODE_LENGTH-1:0]    Operation,
         output logic[DATA_WIDTH-1:0] ALUResult,
-
+                        // sinal de jal e jalr
         input logic jal,
         input logic jalr,
-        input logic [PC_W-1:0] Curr_Pc,
-        output logic [DATA_WIDTH-1:0] jalr_src
+        input logic [PC_W-1:0] Curr_Pc, // pc atual
+        output logic [DATA_WIDTH-1:0] jalr_src // out para o reg + imediate se for jalr
         );
 
         // TODO: Verificações de negativo nos de deslocamento
@@ -53,14 +53,11 @@ module alu#(
             4'b1110:     // LUI
                     ALUResult = SrcB;
             4'b1111:  begin      // JAL e JALR(guarda pc + 4 no reg que ele ta usando na operação)
-                    //ALUResult = {23'b0, Curr_Pc + 9'b100};
-                    
                     ALUResult = {23'b0, Curr_Pc + 9'b100};
-                    
-                    if(jalr == 1) begin
-                        //$display("A:%d b:%d\n->", SrcA, SrcB, SrcA + SrcB);
+                    if(jalr == 1) begin // se for jalr ele calcula para onde direcionar o pc
                         jalr_src = SrcA + SrcB;
                     end
+                    // TODO: Ideia para halt é colocar o pc para um númeor quebrado, se for isso o processador ele para
             end
             default:
                     ALUResult = 0;

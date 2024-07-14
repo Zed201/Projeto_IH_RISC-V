@@ -32,19 +32,17 @@ module Controller (
   assign JAL = 7'b1101111;  //assign JAL
   assign JALR = 7'b1100111;  //assign JALR
 
-  assign jal = (Opcode == JAL);
-  assign jalr = (Opcode == JALR);
 
-  // always @(Opcode) begin
-  //   $display("Opecode = %b\n", Opcode);
-  // end
-
-  assign ALUSrc = (Opcode == LW || Opcode == SW || Opcode == I_TYPE || Opcode == LUI || Opcode == JALR);
-  assign MemtoReg = (Opcode == LW);
-  assign RegWrite = (Opcode == R_TYPE || Opcode == LW || Opcode == I_TYPE || Opcode == LUI || Opcode == JALR || Opcode == JAL);
-  assign MemRead = (Opcode == LW);
-  assign MemWrite = (Opcode == SW);
+  assign ALUSrc = (Opcode == LW || Opcode == SW || Opcode == I_TYPE || Opcode == LUI || Opcode == JALR); // disponibiliza alu
+  assign MemtoReg = (Opcode == LW); // leitura de memoria
+  assign RegWrite = (Opcode == R_TYPE || Opcode == LW || Opcode == I_TYPE || Opcode == LUI || Opcode == JALR || Opcode == JAL); // escrita em reg
+  assign MemRead = (Opcode == LW); //leitura de memoria
+  assign MemWrite = (Opcode == SW); // escrita de memoria
+  // combinatório para alu.sv
   assign ALUOp[0] = (Opcode == BR || Opcode == LUI || Opcode == JAL || Opcode == JALR);
   assign ALUOp[1] = (Opcode == R_TYPE || Opcode == I_TYPE || Opcode == LUI || Opcode == JAL || Opcode == JALR);
-  assign Branch = (Opcode == BR);
+
+  assign Branch = (Opcode == BR); // branch apenas para condicionais
+  assign jal = (Opcode == JAL);
+  assign jalr = (Opcode == JALR);
 endmodule

@@ -53,8 +53,9 @@ module Datapath #(
   logic [1:0] FBmuxSel;
   logic [DATA_W-1:0] FAmux_Result;
   logic [DATA_W-1:0] FBmux_Result;
-    logic [31:0] jalr_src;
-   // TODO: Talvez modificar isso daqui para fazer o halt
+
+  logic [31:0] jalr_src;
+  
   logic Reg_Stall;  //1: PC fetch same, Register not update
 
   if_id_reg A;
@@ -156,6 +157,7 @@ module Datapath #(
       B.func3 <= 0;
       B.func7 <= 0;
       B.Curr_Instr <= A.Curr_Instr;  //debug tmp
+
       B.jal <= 0;
       B.jalr <= 0;
 
@@ -177,6 +179,7 @@ module Datapath #(
       B.func3 <= A.Curr_Instr[14:12];
       B.func7 <= A.Curr_Instr[31:25];
       B.Curr_Instr <= A.Curr_Instr;  //debug tmp
+
       B.jal <= jal;
       B.jalr <= jalr;     
     end
@@ -228,6 +231,7 @@ module Datapath #(
       SrcB,
       ALU_CC,
       ALUResult,
+      
       B.jal,
       B.jalr,
       B.Curr_Pc,
@@ -242,6 +246,7 @@ module Datapath #(
       Old_PC_Four,
       BrPC,
       PcSel,
+
       B.jal,
       B.jalr,
       jalr_src

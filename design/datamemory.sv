@@ -29,7 +29,7 @@ module datamemory #(
   );
 
   always_ff @(*) begin
-    //raddress = {{22{1'b0}}, a[8:2], {2{1'b0}}}; // basicamente é como se ele avança-se o contador apenas contando de 4 em 4, fazer logica parecida com os de lb, lh, lbh, sb, sh
+    //raddress = {{22{1'b0}}, a[8:2], {2{1'b0}}};
     waddress = {{22{1'b0}}, a[8:2], {2{1'b0}}};
     Datain = wd;
     Wr = 4'b0000;
@@ -54,7 +54,7 @@ module datamemory #(
         end
         default: rd <= Dataout;
       endcase
-    end else if (MemWrite) begin
+    end else if (MemWrite) begin // TODO: Resolver sb e sh
       case (Funct3)
         3'b010: begin  //SW
           Wr <= 4'b1111;
