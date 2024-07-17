@@ -28,6 +28,7 @@ module riscv #(
 
   logic jal;
   logic jalr;
+  logic halt;
 
   Controller c (
       opcode,
@@ -40,7 +41,8 @@ module riscv #(
       Branch,
 
       jal,
-      jalr
+      jalr,
+      halt
   );
 
   ALUController ac (
@@ -76,7 +78,8 @@ module riscv #(
       rd_data,
       
       jal,
-      jalr
+      jalr,
+      halt
   );
 
 endmodule

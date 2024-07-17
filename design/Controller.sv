@@ -18,10 +18,11 @@ module Controller (
     output logic [1:0] ALUOp,  //00: LW/SW; 01:Branch; 10: Rtype
     output logic Branch,  //0: branch is not taken; 1: branch is taken
     output logic jal,
-    output logic jalr
+    output logic jalr,
+    output logic halt
 );
 
-  logic [6:0] R_TYPE, LW, SW, BR, I_TYPE, LUI, JAL, JALR;
+  logic [6:0] R_TYPE, LW, SW, BR, I_TYPE, LUI, JAL, JALR, HALT;
   assign I_TYPE = 7'b0010011;  //addi, andi, ori, xori, slli, srli, srai
   assign R_TYPE = 7'b0110011;  //add,and
   assign LW = 7'b0000011;  //lw, lb, lbu, lh
@@ -32,7 +33,7 @@ module Controller (
   assign JAL = 7'b1101111;  //assign JAL
   assign JALR = 7'b1100111;  //assign JALR
 
-
+  assign HALT = 7'b1111111;  //assign HALT
   assign ALUSrc = (Opcode == LW || Opcode == SW || Opcode == I_TYPE || Opcode == LUI || Opcode == JALR); // disponibiliza alu
   assign MemtoReg = (Opcode == LW); // leitura de memoria
   assign RegWrite = (Opcode == R_TYPE || Opcode == LW || Opcode == I_TYPE || Opcode == LUI || Opcode == JALR || Opcode == JAL); // escrita em reg
@@ -45,4 +46,5 @@ module Controller (
   assign Branch = (Opcode == BR); // branch apenas para condicionais
   assign jal = (Opcode == JAL);
   assign jalr = (Opcode == JALR);
+  assign halt = (Opcode == HALT);
 endmodule

@@ -38,7 +38,8 @@ module Datapath #(
     output logic [DATA_W-1:0] rd_data,  // read data
 
     input logic jal,
-    input logic jalr
+    input logic jalr,
+    input logic halt
 );
 
   logic [PC_W-1:0] PC, PCPlus4, Next_PC;
@@ -160,6 +161,7 @@ module Datapath #(
 
       B.jal <= 0;
       B.jalr <= 0;
+      B.halt <= 0;
 
     end else begin
       B.ALUSrc <= ALUsrc;
@@ -181,7 +183,8 @@ module Datapath #(
       B.Curr_Instr <= A.Curr_Instr;  //debug tmp
 
       B.jal <= jal;
-      B.jalr <= jalr;     
+      B.jalr <= jalr;  
+      B.halt <= halt;   
     end
   end
 
@@ -249,7 +252,8 @@ module Datapath #(
 
       B.jal,
       B.jalr,
-      jalr_src
+      jalr_src,
+      B.halt
   );
 
   // EX_MEM_Reg C;

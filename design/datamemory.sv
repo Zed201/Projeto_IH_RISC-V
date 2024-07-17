@@ -56,6 +56,14 @@ module datamemory #(
       endcase
     end else if (MemWrite) begin // TODO: Resolver sb e sh
       case (Funct3)
+        3'b001: begin  //SH
+          Wr <= 4'b0011;
+          Datain[15:0] <= wd;
+        end
+        3'b000: begin  //SB
+          Wr <= 4'b0001;
+          Datain[7:0] <= wd;
+        end
         3'b010: begin  //SW
           Wr <= 4'b1111;
           Datain <= wd;

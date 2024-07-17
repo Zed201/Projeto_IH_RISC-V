@@ -14,12 +14,25 @@ module BranchUnit #(
 
     input logic jal, // sinal de jal e jalr
     input logic jalr,
-    input logic [31:0] jalr_src // (reg + imm passado no jalr)
-);
+    input logic [31:0] jalr_src, // (reg + imm passado no jalr)
+    input logic halt
+    );
 
   logic Branch_Sel;
   logic [31:0] PC_Full;
+  logic [8:0] tmp_pc = 0;
 
+  always @(halt) begin
+    if(halt == 1 && tmp_pc == 0) begin
+      tmp_pc = Cur_PC + 8;    
+      //$display("Vai %d\n", tmp_pc);
+    end
+  end
+  always @(Cur_PC) begin
+    if(Cur_PC == tmp_pc && Cur_PC != 0 ) begin
+      $stop;
+    end
+  end
   assign PC_Full = {23'b0, Cur_PC};
 
   // se for jalr ele basicamente pega o dado que vem da alu, no caso a combinação do registrador + imediate
