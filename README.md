@@ -43,6 +43,6 @@ Seu objetivo é implementar as instruções restantes listadas abaixo:
 | 21 | `HALT`    |      ✅     |    ✅    |      ✅      |
 
 ## Grupo:
-Luiz Gustavo Pinheiro(lgpss)
-Henrique Cesar Higuino(hchhc)
-João Pedro Marinho(jpms3)
+Luiz Gustavo Pinheiro(lgpss),
+Henrique Cesar Higuino(hchhc),
+João Pedro Marinho(jpms3),
