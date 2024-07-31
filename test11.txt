@@ -1,0 +1,72 @@
+Codigo 11: Jalr
+
+addi x7,x0,-1
+sw x7,0(x0)
+lw x9,0(x0)
+or x4,x2,x0
+add x6,x4,x2
+jalr x12,x0,12
+
+Resultado:
+
+55: Register x 7 written with value: unsigned [ffffffff] - signed [         -1]
+
+55: Memory [  0] written with value: [ffffffff] | [         -1]
+
+65: Memory [  0] read with value: [ffffffff] | [         -1]
+
+75: Register x 9 written with value: unsigned [ffffffff] - signed [         -1]
+
+85: Register x 4 written with value: unsigned [00000000] - signed [          0]
+
+95: Register x 6 written with value: unsigned [00000000] - signed [          0]
+
+105: Register x12 written with value: unsigned [00000018] - signed [         24]
+
+135: Register x 4 written with value: unsigned [00000000] - signed [          0]
+
+145: Register x 6 written with value: unsigned [00000000] - signed [          0]
+
+155: Register x12 written with value: unsigned [00000018] - signed [         24]
+
+185: Register x 4 written with value: unsigned [00000000] - signed [          0]
+
+195: Register x 6 written with value: unsigned [00000000] - signed [          0]
+
+205: Register x12 written with value: unsigned [00000018] - signed [         24]
+
+235: Register x 4 written with value: unsigned [00000000] - signed [          0]
+
+245: Register x 6 written with value: unsigned [00000000] - signed [          0]
+
+255: Register x12 written with value: unsigned [00000018] - signed [         24]
+
+285: Register x 4 written with value: unsigned [00000000] - signed [          0]
+
+295: Register x 6 written with value: unsigned [00000000] - signed [          0]
+
+305: Register x12 written with value: unsigned [00000018] - signed [         24]
+
+335: Register x 4 written with value: unsigned [00000000] - signed [          0]
+
+345: Register x 6 written with value: unsigned [00000000] - signed [          0]
+
+355: Register x12 written with value: unsigned [00000018] - signed [         24]
+
+385: Register x 4 written with value: unsigned [00000000] - signed [          0]
+
+395: Register x 6 written with value: unsigned [00000000] - signed [          0]
+
+405: Register x12 written with value: unsigned [00000018] - signed [         24]
+
+435: Register x 4 written with value: unsigned [00000000] - signed [          0]
+
+445: Register x 6 written with value: unsigned [00000000] - signed [          0]
+
+455: Register x12 written with value: unsigned [00000018] - signed [         24]
+
+485: Register x 4 written with value: unsigned [00000000] - signed [          0]
+
+495: Register x 6 written with value: unsigned [00000000] - signed [          0]
+
+505: Register x12 written with value: unsigned [00000018] - signed [         24]

@@ -1,7 +1,7 @@
 
 `timescale 1ns / 1ps
 
-module instructionmemory #(
+module instructionmemory  (
     parameter INS_ADDRESS = 9,
     parameter INS_W = 32
 ) (

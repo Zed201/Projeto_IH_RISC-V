@@ -1,6 +1,6 @@
 `timescale 1ns / 1ps
 
-module RegFile #(
+module RegFile  (
     // Parameters
     parameter DATA_WIDTH = 32,  // number of bits in each register
     parameter ADDRESS_WIDTH = 5,  //number of registers = 2^ADDRESS_WIDTH

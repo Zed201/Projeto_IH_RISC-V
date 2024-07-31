@@ -1,6 +1,6 @@
 `timescale 1ns / 1ps
 
-module BranchUnit #(
+module BranchUnit  (
     parameter PC_W = 9
 ) (
     input logic [PC_W-1:0] Cur_PC,

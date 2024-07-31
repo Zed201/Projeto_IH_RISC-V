@@ -1,0 +1,25 @@
+Codigo 13: HALT 2
+
+addi x4,x0,0
+addi x4,x0,1
+addi x4,x0,2
+addi x4,x0,4
+addi x4,x0,5
+addi x4,x0,6
+halt x0,0
+addi x4,x0,7
+addi x4,x0,8
+
+Resultado:
+
+55: Register x 4 written with value: unsigned [00000000] - signed [          0]
+
+65: Register x 4 written with value: unsigned [00000001] - signed [          1]
+
+75: Register x 4 written with value: unsigned [00000002] - signed [          2]
+
+85: Register x 4 written with value: unsigned [00000004] - signed [          4]
+
+95: Register x 4 written with value: unsigned [00000005] - signed [          5]
+
+105: Register x 4 written with value: unsigned [00000006] - signed [          6]

@@ -1,6 +1,6 @@
-# Simulation Results
+  Simulation Results
 
-## SW
+   SW
 
 We conducted a simulation using the instructions provided in the file [sw.mif](sw.mif) and the testbench [tb_top](/verif/tb_top.sv) to evaluate the pipeline's functionality.
 
@@ -8,7 +8,7 @@ Also, a 32-bit data memory was introduced. The data memory is initialized with t
 
 The obtained result matches the expected outcome, which can be verified below.
 
-### Instructions Tested
+    Instructions Tested
 
 The simulation included testing the following instructions:
 
@@ -18,7 +18,7 @@ sw x7,0(x0)
 lw x9,0(x0)
 ```
 
-### Registers/Memory State after each instruction
+    Registers/Memory State after each instruction
 
 The following information is extracted from the simulation log and can be interpreted as demonstrated in the example below:
 
@@ -39,11 +39,11 @@ In the above example, `tt` represents the simulation time, `x` represents the re
 75: Register [ 9] written with value: [ffffffff] | [         -1]
 ```
 
-## SB, SH
+   SB, SH
 
 - [sb-sh.mif](sb-sh.mif)
 
-### Instructions Tested
+    Instructions Tested
 
 ```assembly
 addi x7,x0,0
@@ -53,7 +53,7 @@ sh x7,2(x0)
 lw x8,0(x0)
 ```
 
-### Registers/Memory State after each instruction
+    Registers/Memory State after each instruction
 
 ```shell
 55: Register [ 7] written with value: [00000000] | [          0]

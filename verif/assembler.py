@@ -262,7 +262,7 @@ INSTRUCTION = {
 }
 
 
-# creates the file and writes the header
+  creates the file and writes the header
 def create_file(file_name):
 	header = ("DEPTH = 65536;          -- The size of memory in words\n"
 	          "WIDTH = 8;              -- The size of data in bits\n"
@@ -275,7 +275,7 @@ def create_file(file_name):
 		file.write(header)
 
 
-# reads the instruction file and returns a list containing the instructions (its lines)
+  reads the instruction file and returns a list containing the instructions (its lines)
 def read_file(file_name):
 	try:
 		with open(file_name, "r") as file:
@@ -289,7 +289,7 @@ def read_file(file_name):
 	return instructions
 
 
-# writes 8-bit chunks of the instructions to the file ({index}: {chunk}		-- {instruction})
+  writes 8-bit chunks of the instructions to the file ({index}: {chunk}		-- {instruction})
 def write_instruction(file_name, index, chunk, instr):
 	if (int(index) % 4 != 0):
 		instr = ""
@@ -302,7 +302,7 @@ def write_instruction(file_name, index, chunk, instr):
 			file.write("\n")
 
 
-# appends a final "END;" string to the file
+  appends a final "END;" string to the file
 def end_file(file_name):
 	with open(file_name, "a") as file:
 		file.write("END;")
@@ -327,7 +327,7 @@ def negative_to_twos_complement(negative_binary):
 
 	return twos_complement
 
-# converts a decimal value to a signed binary value (sign bit is the first bit)
+  converts a decimal value to a signed binary value (sign bit is the first bit)
 def sbin(value):
 	binary = bin(int(value))
 
@@ -338,7 +338,7 @@ def sbin(value):
 		return '0' + binary[2:]
 
 
-# pads a binary value with 0s or 1s to a certain length (same as zfill() but extends the sign bit)
+  pads a binary value with 0s or 1s to a certain length (same as zfill() but extends the sign bit)
 def sfill(value, length):
 	if (len(value) < length):
 		if (value[0] == '1'):
@@ -364,7 +364,7 @@ def check_immediate(immediate, length):
 		raise Exception("Immediate value out of range.")
 
 
-# translates an instruction to binary (assembly to machine code)
+  translates an instruction to binary (assembly to machine code)
 def translate_instruction(instruction):
 	try:
 		instr = instruction.split(" ")[0]

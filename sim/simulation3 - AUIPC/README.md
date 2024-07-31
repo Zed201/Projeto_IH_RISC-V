@@ -1,12 +1,12 @@
-# Simulation Results
+  Simulation Results
 
-## AUIPC
+   AUIPC
 
 We conducted a simulation using the instructions provided in the file [instruction.mif](instruction.mif) and the testbench [tb_top](/verif/tb_top.sv) to evaluate the pipeline's functionality.
 
 The obtained result matches the expected outcome, which can be verified below.
 
-### Instructions Tested
+    Instructions Tested
 
 The simulation included testing the following instructions:
 
@@ -17,7 +17,7 @@ and x7,x6,x1
 auipc x6,3
 ```
 
-### Registers after each instruction
+    Registers after each instruction
 
 The following information is extracted from the simulation log and can be interpreted as demonstrated in the example below:
 

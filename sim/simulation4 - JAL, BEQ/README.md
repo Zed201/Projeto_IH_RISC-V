@@ -1,12 +1,12 @@
-# Simulation Results
+  Simulation Results
 
-## JAL, BEQ (taken)
+   JAL, BEQ (taken)
 
 We conducted a simulation using the instructions provided in the file [beqtaken.mif](beqtaken.mif) and the testbench [tb_top](/verif/tb_top.sv) to evaluate the pipeline's functionality.
 
 The obtained result matches the expected outcome, which can be verified below.
 
-### Instructions Tested
+    Instructions Tested
 
 The simulation included testing the following instructions:
 
@@ -22,7 +22,7 @@ beq x7,x7,-8
 or x4,x2,x0
 ```
 
-### Registers after each instruction
+    Registers after each instruction
 
 The following information is extracted from the simulation log and can be interpreted as demonstrated in the example below:
 
@@ -58,11 +58,11 @@ In the above example, `tt` represents the simulation time, `x` represents the re
 505: Register [ 7] written with value: [00000001] | [         1]
 ```
 
-## BEQ (not taken)
+   BEQ (not taken)
 
 - [beqntaken.mif](beqntaken.mif)
 
-### Instructions Tested
+    Instructions Tested
 
 ```assembly
 addi x7,x0,1
@@ -76,7 +76,7 @@ beq x8,x7,-8
 or x4,x2,x0
 ```
 
-### Registers after each instruction
+    Registers after each instruction
 
 ```shell
 45: Register [ 7] written with value: [00000001] | [         1]
@@ -88,10 +88,10 @@ or x4,x2,x0
 135: Register [ 4] written with value: [00000004] | [         4]
 ```
 
-## BNE (taken)
+   BNE (taken)
 - [bnetaken.mif](bnetaken.mif)
 
-### Instructions Tested
+    Instructions Tested
 
 ```assembly
 addi x7,x0,1
@@ -105,7 +105,7 @@ bne x8,x7,-8
 or x4,x2,x0
 ```
 
-### Registers after each instruction
+    Registers after each instruction
 
 ```shell
 45: Register [ 7] written with value: [00000001] | [         1]
@@ -131,10 +131,10 @@ or x4,x2,x0
 505: Register [ 7] written with value: [00000001] | [         1]
 ```
 
-## BLT (taken)
+   BLT (taken)
 - [blttaken.mif](blttaken.mif)
 
-### Instructions Tested
+    Instructions Tested
 
 ```assembly
 addi x7,x0,1
@@ -148,7 +148,7 @@ blt x8,x7,-8
 or x4,x2,x0
 ```
 
-### Registers after each instruction
+    Registers after each instruction
 
 ```shell
 45: Register [ 7] written with value: [00000001] | [         1]
@@ -174,10 +174,10 @@ or x4,x2,x0
 505: Register [ 7] written with value: [00000002] | [         2]
 ```
 
-## BGE (taken)
+   BGE (taken)
 - [bgetaken.mif](bgetaken.mif)
 
-### Instructions Tested
+    Instructions Tested
 
 ```assembly
 addi x7,x0,1
@@ -191,7 +191,7 @@ bge x7,x8,-8
 or x4,x2,x0
 ```
 
-### Registers after each instruction
+    Registers after each instruction
 
 ```shell
 45: Register [ 7] written with value: [00000001] | [         1]
@@ -217,10 +217,10 @@ or x4,x2,x0
 505: Register [ 7] written with value: [00000002] | [         2]
 ```
 
-## BLTU (taken)
+   BLTU (taken)
 - [bltutaken.mif](bltutaken.mif)
 
-### Instructions Tested
+    Instructions Tested
 
 ```assembly
 addi x7,x0,1
@@ -234,7 +234,7 @@ bltu x8,x7,-8
 or x4,x2,x0
 ```
 
-### Registers after each instruction
+    Registers after each instruction
 
 ```shell
 55: Register [ 7] written with value: [00000001] | [          1]
@@ -259,10 +259,10 @@ or x4,x2,x0
 475: Register [ 8] written with value: [00000001] | [          1]
 ```
 
-## BGEU (not taken)
+   BGEU (not taken)
 - [bgeuntaken.mif](bgeuntaken.mif)
 
-### Instructions Tested
+    Instructions Tested
 
 ```assembly
 addi x7,x0,1
@@ -276,7 +276,7 @@ bgeu x8,x7,-8
 or x4,x2,x0
 ```
 
-### Registers after each instruction
+    Registers after each instruction
 
 ```shell
 55: Register [ 7] written with value: [00000001] | [          1]
@@ -288,10 +288,10 @@ or x4,x2,x0
 145: Register [ 4] written with value: [00000004] | [          4]
 ```
 
-## JALR
+   JALR
 - [jalr.mif](jalr.mif)
 
-### Instructions Tested
+    Instructions Tested
 
 ```assembly
 addi x7,x0,-1
@@ -302,7 +302,7 @@ add x6,x4,x2
 jalr x12,x0,12
 ```
 
-### Registers/Memory State after each instruction
+    Registers/Memory State after each instruction
 
 The following information is extracted from the simulation log and can be interpreted as demonstrated in the example below:
 

@@ -1,6 +1,6 @@
 `timescale 1ns / 1ps
 
-module flopr #(
+module flopr  (
     parameter WIDTH = 8
 ) (
     input logic clk,

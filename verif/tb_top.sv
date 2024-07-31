@@ -36,10 +36,10 @@ module tb_top;
   initial begin
     tb_clk = 0;
     reset  = 1;
-    #(CLKPERIOD);
+     (CLKPERIOD);
     reset = 0;
 
-    #(CLKPERIOD * NUM_CYCLES);
+     (CLKPERIOD * NUM_CYCLES);
 
     $stop;
   end
@@ -58,6 +58,6 @@ module tb_top;
   end : MEMORY
 
   //clock generator
-  always #(CLKDELAY) tb_clk = ~tb_clk;
+  always  (CLKDELAY) tb_clk = ~tb_clk;
 
 endmodule

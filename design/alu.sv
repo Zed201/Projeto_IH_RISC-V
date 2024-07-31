@@ -1,6 +1,6 @@
 `timescale 1ns / 1ps
 
-module alu#(
+module alu (
         parameter DATA_WIDTH = 32,
         parameter OPCODE_LENGTH = 4,
         parameter PC_W = 9

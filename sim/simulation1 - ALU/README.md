@@ -1,12 +1,12 @@
-# Simulation Results
+  Simulation Results
 
-## ADDI, OR, ADD, SLL, SRL, SRA, SLT, SLTU, SLTI, SLTIU, SLLI, SRLI, SRAI, XORI, ORI, ANDI, XOR
+   ADDI, OR, ADD, SLL, SRL, SRA, SLT, SLTU, SLTI, SLTIU, SLLI, SRLI, SRAI, XORI, ORI, ANDI, XOR
 
 We conducted a simulation using the instructions provided in the file [instruction.mif](instruction.mif) and the testbench [tb_top](/verif/tb_top.sv) to evaluate the pipeline's functionality.
 
 The obtained result matches the expected outcome, which can be verified below.
 
-### Instructions Tested
+    Instructions Tested
 
 The simulation included testing the following instructions:
 
@@ -40,7 +40,7 @@ andi x8,x1,10
 xor x9,x1,x2
 ```
 
-### Registers after each instruction
+    Registers after each instruction
 
 The following information is extracted from the simulation log and can be interpreted as demonstrated in the example below:
 
@@ -82,11 +82,11 @@ In the above example, `tt` represents the simulation time, `x` represents the re
 315: Register [ 9] written with value: [0000000c] | [         12]
 ```
 
-## SUB, AND, LUI
+   SUB, AND, LUI
 
 - [luiandsub.mif](luiandsub.mif)
 
-### Instructions Tested
+    Instructions Tested
 
 ```assembly
 addi x1,x0,8
@@ -95,7 +95,7 @@ and x7,x6,x1
 lui x6,3
 ```
 
-### Registers after each instruction
+    Registers after each instruction
 
 ```shell
 55: Register [ 1] written with value: [00000008] | [          8]

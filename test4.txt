@@ -1,0 +1,41 @@
+Codigo 4: Testando SB, SH, LBU
+
+lbu x4,0(x0)
+addi x3,x0,255
+sb x3,0(x0)
+addi x3,x0,257
+sb x3,0(x0)
+sh x3,0(x0)
+
+Memória:
+
+000: 00000001;  -- 1
+001: 00000001;
+002: 00000000;
+003: 00000000;
+
+004: 00000000; 
+005: 00000000;
+006: 00000000;
+007: 00000000;
+
+008: 00000101;  
+009: 00000000;
+010: 00000000;
+011: 00000000;
+
+Resultado:
+
+45: Memory [  0] read with value: [00000001] | [          1]
+
+55: Register x 4 written with value: unsigned [00000001] - signed [          1]
+
+65: Register x 3 written with value: unsigned [000000ff] - signed [        255]
+
+65: Memory [  0] written with value: [000000ff] | [        255]
+
+85: Register x 3 written with value: unsigned [00000101] - signed [        257]
+
+85: Memory [  0] written with value: [00000101] | [        257]
+
+95: Memory [  0] written with value: [00000101] | [        257]

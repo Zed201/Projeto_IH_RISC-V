@@ -2,7 +2,7 @@
 
 import Pipe_Buf_Reg_PKG::*;
 
-module Datapath #(
+module Datapath  (
     parameter PC_W = 9,  // Program Counter
     parameter INS_W = 32,  // Instruction Width
     parameter RF_ADDRESS = 5,  // Register File Address
@@ -65,18 +65,18 @@ module Datapath #(
   mem_wb_reg D;
 
   // next PC
-  adder #(9) pcadd (
+  adder  (9) pcadd (
       PC,
       9'b100,
       PCPlus4
   );
-  mux2 #(9) pcmux (
+  mux2  (9) pcmux (
       PCPlus4,
       BrPC[PC_W-1:0],
       PcSel,
       Next_PC
   );
-  flopr #(9) pcreg (
+  flopr  (9) pcreg (
       clk,
       reset,
       Next_PC,
@@ -205,7 +205,7 @@ module Datapath #(
   assign Funct3 = B.func3;
   assign ALUOp_Current = B.ALUOp;
 
-  mux4 #(32) FAmux (
+  mux4  (32) FAmux (
       B.RD_One,
       WrmuxSrc,
       C.Alu_Result,
@@ -213,7 +213,7 @@ module Datapath #(
       FAmuxSel,
       FAmux_Result
   );
-  mux4 #(32) FBmux (
+  mux4  (32) FBmux (
       B.RD_Two,
       WrmuxSrc,
       C.Alu_Result,
@@ -221,7 +221,7 @@ module Datapath #(
       FBmuxSel,
       FBmux_Result
   );
-  mux2 #(32) srcbmux (
+  mux2  (32) srcbmux (
       FBmux_Result,
       B.ImmG,
       B.ALUSrc,
@@ -240,7 +240,7 @@ module Datapath #(
       B.Curr_Pc,
       jalr_src
   );
-  BranchUnit #(9) brunit (
+  BranchUnit  (9) brunit (
       B.Curr_Pc,
       B.ImmG,
       B.Branch,
@@ -332,7 +332,7 @@ module Datapath #(
   end
 
   //--// The LAST Block
-  mux2 #(32) resmux (
+  mux2  (32) resmux (
       D.Alu_Result,
       D.MemReadData,
       D.MemtoReg,

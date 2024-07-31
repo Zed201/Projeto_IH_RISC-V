@@ -1,0 +1,16 @@
+Codigo 2: Testando SUB, AND, LUI
+
+addi x1,x0,8
+sub x6,x6,x1
+and x7,x6,x1
+lui x6,3
+
+Resultado:
+
+55: Register x 1 written with value: unsigned [00000008] - signed [          8]
+ 
+65: Register x 6 written with value: unsigned [fffffff8] - signed [         -8]
+ 
+75: Register x 7 written with value: unsigned [00000008] - signed [          8]
+
+85: Register x 6 written with value: unsigned [00003000] - signed [      12288]

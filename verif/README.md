@@ -1,6 +1,6 @@
-# 📝 Como Inicializar a Memória de Instruções
+  📝 Como Inicializar a Memória de Instruções
 
-## Com Python 3
+   Com Python 3
 
 1. Crie um arquivo chamado `instructions.txt` no mesmo diretório do script [`assembler.py`](assembler.py).
 
@@ -14,7 +14,7 @@
 
 Se tudo estiver correto, um arquivo chamado `instruction.mif` será gerado no mesmo diretório do script.
 
-## No Repl.it
+   No Repl.it
 
 1. Crie um repl do tipo Python no [Repl.it](https://repl.it/).
 
@@ -29,7 +29,7 @@ Se tudo estiver correto, um arquivo chamado `instruction.mif` será gerado no me
 
 Se tudo estiver correto, um arquivo chamado `instruction.mif` será gerado e poderá ser baixado no menu lateral do repl.
 
-# 🧪 Como Testar seu Programa com o Testbench
+  🧪 Como Testar seu Programa com o Testbench
 
 1. Crie um novo projeto vazio no ModelSim.
 

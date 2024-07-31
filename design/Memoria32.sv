@@ -68,7 +68,7 @@ module Memoria32 (
 
   //Bancos de memórias (cada banco possui 65536 bytes)
   //0
-  ramOnChip32 #(
+  ramOnChip32  (
       .ramSize(65536),
       .ramWide(8)
   ) memBlock0 (
@@ -80,7 +80,7 @@ module Memoria32 (
       .q(outS0)
   );
   //1
-  ramOnChip32 #(
+  ramOnChip32  (
       .ramSize(65536),
       .ramWide(8)
   ) memBlock1 (
@@ -92,7 +92,7 @@ module Memoria32 (
       .q(outS1)
   );
   //2
-  ramOnChip32 #(
+  ramOnChip32  (
       .ramSize(65536),
       .ramWide(8)
   ) memBlock2 (
@@ -104,7 +104,7 @@ module Memoria32 (
       .q(outS2)
   );
   //3
-  ramOnChip32 #(
+  ramOnChip32  (
       .ramSize(65536),
       .ramWide(8)
   ) memBlock3 (

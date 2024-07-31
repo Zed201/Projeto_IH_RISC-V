@@ -1,6 +1,6 @@
 `timescale 1ns / 1ps
 
-module datamemory #(
+module datamemory  (
     parameter DM_ADDRESS = 9,
     parameter DATA_W = 32
 ) (
